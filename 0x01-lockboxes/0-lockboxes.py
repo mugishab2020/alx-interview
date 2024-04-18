@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ module for making the boxes unlocker"""
+
+
 def canUnlockAll(boxes):
     """Check if it's possible to unlock all boxes in a given list of boxes"""
     opened = [0]
