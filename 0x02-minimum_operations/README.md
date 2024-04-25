@@ -1,0 +1,1 @@
+This is the project that we will focus on minimum operations
