@@ -1,0 +1,1 @@
+This is the small project to verify the UTF-8 encoding rules
