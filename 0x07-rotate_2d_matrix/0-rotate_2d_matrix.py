@@ -1,5 +1,5 @@
-#!usr/bin/env python3
-'''implementation of 2d matrix '''
+#!/usr/bin/python3
+"""rotate_2d_matrix"""
 
 
 def rotate_2d_matrix(matrix):
@@ -9,15 +9,16 @@ def rotate_2d_matrix(matrix):
           - matrix: list of two dimension array
       Return:
           - Nothing
-    """
-    # Get the number of rows and colu
-
+      """
+    # Get the number of rows and columns
     n = len(matrix)
+
     # 1. Transpose the matrix
     for i in range(n):
-        for j in range(i+1, n):  # Avoid redundant swaps (i == j)
+        for j in range(i + 1, n):  # Avoid redundant swaps (i == j)
             # Swap elements
             matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-    # 2. Reverse each row finally
-    for a in range(n):
-        matrix[a].reverse()
+
+    # 2. Reverse each row
+    for row in matrix:
+        row.reverse()
