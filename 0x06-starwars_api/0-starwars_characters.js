@@ -9,7 +9,7 @@ if (movieId == null) {
   process.exit(1);
 }
 
-const url = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
+const url = `https://swapi.dev/api/films/${movieId}/`;
 
 request(url, (error, response, body) => {
   if (error) {
