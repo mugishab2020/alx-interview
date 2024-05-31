@@ -4,7 +4,7 @@ const request = require('request');
 
 const movieId = process.argv[2];
 
-if (movieId == null) {
+if (!movieId) {
   console.log('Please provide a Movie ID');
   process.exit(1);
 }
@@ -24,8 +24,8 @@ request(url, (error, response, body) => {
   const film = JSON.parse(body);
   const characterUrls = film.characters;
 
-  characterUrls.forEach((charUrl) => {
-    request(charUrl, (error, response, body) => {
+  characterUrls.forEach((characterUrl) => {
+    request(characterUrl, (error, response, body) => {
       if (error) {
         console.error('Error:', error);
         return;
