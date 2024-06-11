@@ -3,6 +3,7 @@
 
 
 def island_perimeter(grid):
+    '''This is the function to generate the island parameters'''
     params = 0
 
     for i in range(len(grid)):
