@@ -1,0 +1,1 @@
+making the prime game for two players in python
