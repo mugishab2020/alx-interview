@@ -2,37 +2,34 @@
 '''this is the function that returns the winner of teh prime game'''
 
 
-def is_prime(n):
-    if n <= 1:
-        return False
-    if n % 2 == 0 or n % 3 == 0:
-        return False
-    if n == 2 or n == 3:
-        return True
-    i = 5
-    while i * i <= n:
-        if n % i == 0 or n % (i + 2) == 0:
-            return False
-        i += 6
-    return True
-
-
 def isWinner(x, nums):
+    '''Prime Game'''
     if x <= 0 or not nums:
         return None
-
+    e_cache_primes = {}
     wins = {"Maria": 0, "Ben": 0}
-
-    for n in nums:
-        prime_count = 0
-        for num in range(1, n + 1):
-            if is_prime(num):
-                prime_count += 1
-        if prime_count % 2 == 1:
-            wins["Maria"] += 1
+    for i in range(x):
+        query_num = nums[i]
+        if query_num in e_cache_primes:
+            count = e_cache_primes[query_num]
         else:
-            wins["Ben"] += 1
-
-    if wins["Maria"] == wins["Ben"]:
+            # counting primes using Sieve of Eratosthenes algorithm
+            primes = [True for _ in range(query_num + 1)]
+            p = 2
+            while p * p <= query_num:
+                if primes[p]:
+                    for x in range(p * p, query_num + 1, p):
+                        primes[x] = False
+                p += 1
+            count = 0
+            for i in range(query_num + 1):
+                if primes[i]:
+                    count += 1
+            e_cache_primes[query_num] = count
+        if count % 2 == 0:
+            wins['Ben'] += 1
+        else:
+            wins['Maria'] += 1
+    if wins['Maria'] == wins['Ben']:
         return None
-    return "Maria" if wins["Maria"] > wins["Ben"] else "Ben"
+    return 'Maria' if wins['Maria'] > wins['Ben'] else 'Ben'
